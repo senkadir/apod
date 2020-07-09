@@ -3,10 +3,10 @@ using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
-[assembly: ExportRenderer(typeof(ScrollView), typeof(ChameleonScrollViewRenderer))]
+[assembly: ExportRenderer(typeof(ScrollView), typeof(ApodScrollViewRenderer))]
 namespace Apod.iOS.Renderers
 {
-    public class ChameleonScrollViewRenderer : ScrollViewRenderer
+    public class ApodScrollViewRenderer : ScrollViewRenderer
     {
         protected override void OnElementChanged(VisualElementChangedEventArgs e)
         {

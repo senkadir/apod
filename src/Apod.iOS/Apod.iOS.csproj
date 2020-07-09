@@ -65,7 +65,7 @@
     <Compile Include="DependencyServices\StatusBar.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Renderers\ChameleonScrollViewRenderer.cs" />
+    <Compile Include="Renderers\ApodScrollViewRenderer.cs" />
     <Compile Include="Renderers\SeparatorRenderer.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
