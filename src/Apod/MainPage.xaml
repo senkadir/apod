@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Apod.MainPage" 
+             xmlns:effect="clr-namespace:Apod.Effects;assembly=Apod" 
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+             xmlns:fft="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" 
+             xmlns:controls="clr-namespace:Apod.Controls;assembly=Apod">
+    <Grid x:Name="ContentWrapper">
+        <StackLayout x:Name="CoverWrapper" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Up"  Swiped="Handle_Swiped" />
+            </StackLayout.GestureRecognizers>
+            <RelativeLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <ff:CachedImage x:Name="ScreenImage" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}" VerticalOptions="FillAndExpand" Aspect="AspectFill" />
+                <Grid x:Name="MainContainer" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
+                    <Grid.Effects>
+                        <effect:SafeAreaPaddingEffect />
+                    </Grid.Effects>
+                    <Grid.Padding>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android" Value="0,0,0,40" />
+                        </OnPlatform>
+                    </Grid.Padding>
+                    <RelativeLayout VerticalOptions="FillAndExpand">
+                        <StackLayout RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.65,Constant=0}" Margin="20,0">
+                            <RelativeLayout VerticalOptions="FillAndExpand">
+                                <Label x:Name="ScreenTitle" HeightRequest="80" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=.75,Constant=0}" LineBreakMode="WordWrap" FontFamily="{StaticResource font_normal}" FontSize="20" TextColor="White" />
+                            </RelativeLayout>
+                        </StackLayout>
+                    </RelativeLayout>
+                    <Label Text="Scroll to know more" FontSize="12" TextColor="DarkGray" FontFamily="{StaticResource font_normal}" VerticalOptions="EndAndExpand" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                </Grid>
+            </RelativeLayout>
+        </StackLayout>
+        <StackLayout x:Name="DataWrapper" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <ScrollView x:Name="ScrollWrapper" HorizontalOptions="Start" VerticalOptions="Start">
+                <StackLayout MinimumHeightRequest="812" Margin="30,0,30,0">
+                    <StackLayout.Effects>
+                        <effect:SafeAreaPaddingEffect />
+                    </StackLayout.Effects>
+                    <StackLayout.Padding>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android" Value="0,40,0,40" />
+                        </OnPlatform>
+                    </StackLayout.Padding>
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout Spacing="6" VerticalOptions="Center">
+                            <Label FontSize="24" TextColor="Black" FontFamily="{StaticResource font_black}" Margin="0,0,0,0" x:Name="Title"/>
+                            <Label FontSize="24" TextColor="Black" FontFamily="{StaticResource font_normal}" Margin="0,0,0,0" x:Name="Date"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <controls:Separator Color="#e8e8e8" Thickness="1" Margin="0,20,0,20" />
+                    <ff:CachedImage Margin="0,0,0,10" x:Name="Image" />
+                    <Label LineHeight="1.5" TextColor="#8c91ab" FontSize="9" FontFamily="{StaticResource font_normal}" x:Name="Copyright" />
+                    <controls:Separator Color="#e8e8e8" Thickness="1" Margin="0,12,0,20" />
+                    <Label LineHeight="1.5" TextColor="#8c91ab" FontSize="13" FontFamily="{StaticResource font_normal}" x:Name="Explanation" />
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </Grid>
+</ContentPage>
