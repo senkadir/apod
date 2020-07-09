@@ -35,7 +35,7 @@ jobs:
         inputs:
           apkFiles: '$(build.binariesdirectory)/$(BuildConfiguration)/*.apk'
           apksign: true
-          apksignerKeystoreFile: development.keystore
+          apksignerKeystoreFile: dev.keystore
           apksignerKeystorePassword: '$(apksignerKeystorePassword)'
           apksignerKeystoreAlias: '$(apksignerKeystoreAlias)'
           apksignerKeyPassword: '$(apksignerKeyPassword)'
@@ -49,7 +49,7 @@ jobs:
       - task: AppCenterDistribute@2
         displayName: 'Deploy $(build.binariesdirectory)/$(BuildConfiguration)/*.apk to Visual Studio App Center'
         inputs:
-          serverEndpoint: 'app center connection'
+          serverEndpoint: 'apod.appcenter.android'
           appSlug: '$(appSlug)'
           appFile: '$(build.binariesdirectory)/$(BuildConfiguration)/*.apk'
           symbolsIncludeParentDirectory: false
